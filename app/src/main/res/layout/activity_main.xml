@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    tools:context=".MainActivity">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_margin="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="3dp"
+        app:cardElevation="3dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+       <LinearLayout
+           android:layout_marginTop="30dp"
+           android:layout_marginBottom="30dp"
+           android:padding="25dp"
+           android:orientation="vertical"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
+           <TextView
+               android:gravity="center_horizontal"
+               android:textSize="20sp"
+               android:textColor="@color/black"
+               android:fontFamily="@font/primary_regular"
+               android:text="welcome, please enter your user name"
+               android:layout_gravity="center_horizontal"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"/>
+
+           <com.google.android.material.textfield.TextInputLayout
+               android:id="@+id/layout_et"
+               style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"               android:hint="user name"
+               app:boxStrokeColor="@color/black"
+               app:helperTextTextColor="@color/black"
+               android:textColorHint="@color/black"
+               app:hintTextColor="@color/black"
+               app:counterTextColor="@color/black"
+               android:outlineAmbientShadowColor="@color/black"
+               app:counterOverflowTextColor="@color/black"
+               android:layout_marginTop="12dp"
+               android:layout_marginStart="12dp"
+               android:layout_marginEnd="12dp"
+               android:layout_width="match_parent"
+               android:layout_height="70dp">
+               <com.google.android.material.textfield.TextInputEditText
+                   android:id="@+id/et_user_name"
+                   android:textCursorDrawable="@drawable/cursor_bg"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"/>
+           </com.google.android.material.textfield.TextInputLayout>
+
+           <com.google.android.material.button.MaterialButton
+               android:textColor="@color/black"
+               android:backgroundTint="#74F7FF"
+               android:id="@+id/btn_login"
+               android:layout_margin="12dp"
+               android:text="login"
+               android:layout_width="match_parent"
+               android:layout_height="50dp"/>
+       </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
