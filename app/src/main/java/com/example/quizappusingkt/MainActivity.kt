@@ -14,12 +14,14 @@ class MainActivity : AppCompatActivity() {
         bind = ActivityMainBinding.inflate(layoutInflater)
         setContentView(bind.root)
 
+
+
         bind.btnLogin.setOnClickListener {
             if (bind.etUserName.text.toString().isEmpty()){
                 bind.layoutEt.error = "enter your name"
                 Toast.makeText(this,"enter your name",Toast.LENGTH_SHORT).show()
             }else{
-                var intent = Intent(this,QuestionActivity::class.java)
+                val intent = Intent(this,QuestionActivity::class.java)
                 startActivity(intent)
             }
         }
