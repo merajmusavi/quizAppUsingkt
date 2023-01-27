@@ -45,6 +45,7 @@
                 android:src="@drawable/ic_flag_of_argentina" />
 
             <TextView
+                android:tag="1"
                 android:id="@+id/option1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -62,6 +63,7 @@
                 android:textSize="15sp" />
 
             <TextView
+                android:tag="2"
                 android:id="@+id/option2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -79,6 +81,7 @@
                 android:textSize="15sp" />
 
             <TextView
+                android:tag="3"
                 android:id="@+id/option3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -96,6 +99,7 @@
                 android:textSize="15sp" />
 
             <TextView
+                android:tag="4"
                 android:id="@+id/option4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -114,6 +118,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/submit_answer"
+                android:onClick="onSubmitClicked"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"

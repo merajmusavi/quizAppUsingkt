@@ -5,13 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.example.quizappusingkt.databinding.ActivityQuestionBinding
 
 class QuestionActivity : AppCompatActivity() {
     lateinit var binding: ActivityQuestionBinding
-    private val current_q = 0
-
+    private var current_q = 0
+    private var which_option = 0
     private lateinit var questions: ArrayList<DataModel>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,8 +22,8 @@ class QuestionActivity : AppCompatActivity() {
 
         questions = Constant.createObj() as ArrayList<DataModel>
 
-        val question = questions[current_q]
-        dataset(question)
+        dataset()
+
 
     }
 
@@ -40,7 +41,8 @@ class QuestionActivity : AppCompatActivity() {
         }
     }
 
-    fun dataset(question: DataModel) {
+    fun dataset() {
+        val question = questions[current_q]
         binding.tvQuestion.text = question.question
         binding.option1.text = question.option1
         binding.option2.text = question.option2
@@ -53,7 +55,25 @@ class QuestionActivity : AppCompatActivity() {
         reset_to_defualt()
 
         val btn = view as TextView
+        when(btn.tag.toString()){
+            "1"->{which_option=1 }
+            "2"->{which_option=2 }
+            "3"->{which_option=3 }
+            "4"->{which_option=4 }
+        }
         btn.typeface = Typeface.DEFAULT_BOLD
         btn.background = ContextCompat.getDrawable(this,R.drawable.bg_option_after_selection)
+    }
+    fun onSubmitClicked(view:View){
+        if (which_option==0 && current_q<=2){
+            current_q++
+
+            dataset()
+
+        }else{
+             current_q = 0
+            dataset()
+
+        }
     }
 }
