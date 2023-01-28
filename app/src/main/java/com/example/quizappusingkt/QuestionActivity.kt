@@ -1,5 +1,6 @@
 package com.example.quizappusingkt
 
+import android.content.Intent
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,6 +8,7 @@ import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import com.example.quizappusingkt.Result
 import com.example.quizappusingkt.databinding.ActivityQuestionBinding
 
 class QuestionActivity : AppCompatActivity() {
@@ -23,6 +25,11 @@ class QuestionActivity : AppCompatActivity() {
         questions = Constant.createObj() as ArrayList<DataModel>
 
         dataset()
+        binding.showResult.setOnClickListener {
+             val intent = Intent(this,Result::class.java)
+            startActivity(intent)
+
+        }
 
 
     }
@@ -74,19 +81,35 @@ class QuestionActivity : AppCompatActivity() {
     }
 
     fun onSubmitClicked(view: View) {
-        if (which_option == 0 && current_q <= 2) {
+        if (current_q == questions.size - 1) {
+            binding.submitAnswer.visibility = View.GONE
+            binding.showResult.visibility = View.VISIBLE
+return
+        }
+        if(which_option==0){
+            binding.submitAnswer.text = "submit answer"
+        }
+        if (which_option == 0 && current_q < questions.size-1) {
             current_q++
 
             dataset()
+            reset_to_defualt()
 
         } else {
             if (which_option == questions[current_q].correct) {
-                setBgForTv(questions[current_q].correct,R.drawable.bg_option_true)
+                setBgForTv(questions[current_q].correct, R.drawable.bg_option_true)
+                binding.submitAnswer.text = "next question"
+                which_option = 0
 
+                if (current_q == questions.size - 1) {
+                    setBgForTv(questions[current_q].correct, R.drawable.bg_option_true)
+
+                    binding.submitAnswer.text = "see result"
+                }
 
             } else {
                 setBgForTv(which_option, R.drawable.bg_option_false)
-                setBgForTv(questions[current_q].correct,R.drawable.bg_option_true)
+                setBgForTv(questions[current_q].correct, R.drawable.bg_option_true)
 
             }
 
